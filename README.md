@@ -9,7 +9,7 @@ A simple WebSocket-based chat server written in Go that allows multiple clients 
 - Auto-generated funny usernames if none provided
 - User connection/disconnection notifications
 - Command support (currently `/exit`)
-- Clean, simple architecture with internal packages
+- Clean, simple architecture
 
 ## Getting Started
 
@@ -71,6 +71,7 @@ Connected (press CTRL+C to quit)
 You can pass your username by providing it as a query parameter ws://host@port?user=xxx
 Type /exit to exit
 < There are currently 2 users in the room.
+< PeppyLlama68: Connected
 < PeppyLlama68: Hey man we need to talk :)
 ```
 
@@ -88,24 +89,6 @@ ws.onmessage = function(event) {
 };
 
 ws.send('Hello, everyone!');
-```
-
-## Project Structure
-
-```
-.
-├── cmd/
-│   └── chat/
-│       └── main.go          # Application entry point
-├── internal/
-│   └── chat/
-│       ├── client.go        # Client management
-│       ├── command.go       # Command handling
-│       ├── hub.go          # Message broadcasting hub
-│       └── server.go       # WebSocket server
-├── go.mod
-├── go.sum
-└── README.md
 ```
 
 ## License
