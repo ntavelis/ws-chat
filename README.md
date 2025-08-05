@@ -81,14 +81,13 @@ Type /exit to exit
 const ws = new WebSocket('ws://localhost:3001?user=Alice');
 
 ws.onopen = function() {
-    console.log('Connected to chat');
+  console.log('Connected to chat');
+  ws.send('Hello, everyone!');
 };
 
 ws.onmessage = function(event) {
-    console.log('Message:', event.data);
+  console.log('Message:', event.data);
 };
-
-ws.send('Hello, everyone!');
 ```
 
 ## License
