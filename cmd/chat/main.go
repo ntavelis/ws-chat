@@ -4,16 +4,18 @@ import (
 	"flag"
 	"log"
 	"net/http"
+
+	"github.com/ntavelis/ws-chat/internal/chat"
 )
 
 func main() {
 	port := flag.String("port", "3001", "Port to run the WebSocket server on")
 	flag.Parse()
 	// Initialize the hub and start it in a goroutine
-	hub := NewHub()
+	hub := chat.NewHub()
 	go hub.Run()
 
-	ws := &Server{Hub: hub}
+	ws := &chat.Server{Hub: hub}
 	server := http.Server{
 		Addr:    ":" + *port,
 		Handler: ws,
